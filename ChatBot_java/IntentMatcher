@@ -1,0 +1,24 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class IntentMatcher {
+    private final Map<String, String> intentKeywords;
+
+    public IntentMatcher() {
+        intentKeywords = new HashMap<>();
+        intentKeywords.put("greet", "hello|hi|hey");
+        intentKeywords.put("farewell", "bye|goodbye|see you");
+        intentKeywords.put("help", "help|support|assist");
+        intentKeywords.put("name", "what's your name|who are you");
+    }
+
+    public String matchIntent(String userInput) {
+        userInput = userInput.toLowerCase();
+        for (Map.Entry<String, String> entry : intentKeywords.entrySet()) {
+            if (userInput.matches(".*\\b(" + entry.getValue() + ")\\b.*")) {
+                return entry.getKey();
+            }
+        }
+        return "unknown";
+    }
+}

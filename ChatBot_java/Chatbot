@@ -1,0 +1,14 @@
+public class Chatbot {
+    private final IntentMatcher intentMatcher;
+    private final ResponseProvider responseProvider;
+
+    public Chatbot() {
+        intentMatcher = new IntentMatcher();
+        responseProvider = new ResponseProvider();
+    }
+
+    public String getResponse(String userInput) {
+        String intent = intentMatcher.matchIntent(userInput);
+        return responseProvider.getResponse(intent);
+    }
+}

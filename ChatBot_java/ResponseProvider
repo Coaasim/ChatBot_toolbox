@@ -1,0 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class ResponseProvider {
+    private final Map<String, String> responses;
+
+    public ResponseProvider() {
+        responses = new HashMap<>();
+        responses.put("greet", "Hello! How can I assist you today?");
+        responses.put("farewell", "Goodbye! Have a great day!");
+        responses.put("help", "I'm here to help! Ask me anything.");
+        responses.put("name", "I'm a simple Java-based chatbot.");
+        responses.put("unknown", "I'm not sure how to respond to that. Can you try asking something else?");
+    }
+
+    public String getResponse(String intent) {
+        return responses.getOrDefault(intent, responses.get("unknown"));
+    }
+}

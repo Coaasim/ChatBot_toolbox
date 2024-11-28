@@ -1,0 +1,18 @@
+public class ChatbotApp {
+    public static void main(String[] args) {
+        Chatbot chatbot = new Chatbot();
+        System.out.println("Welcome to the Java Chatbot! Type 'exit' to end the conversation.");
+        
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        while (true) {
+            System.out.print("You: ");
+            String userInput = scanner.nextLine();
+            if (userInput.equalsIgnoreCase("exit")) break;
+
+            String response = chatbot.getResponse(userInput);
+            System.out.println("Bot: " + response);
+        }
+        System.out.println("Goodbye!");
+        scanner.close();
+    }
+}
